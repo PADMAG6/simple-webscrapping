@@ -5,3 +5,20 @@ soup=BeautifulSoup(res.text,'lxml')
 tweet=soup.find_all('div', {'class': 'js-tweet-text-container'})
 for q in tweet:
     print(q.text,file=open("C:/desktop_folders/python webscrapping/tweets.txt",'a'))
+    
+    ----------------------------------------------------------------------------------------------------------------------------
+ import requests
+from bs4 import BeautifulSoup
+res= requests.get('https://pastebin.com/u/jroosen')
+soup=BeautifulSoup(res.text,'html.parser')
+#print (soup.prettify())
+infor=soup.find('table', {'class': 'maintable'})
+x=[]
+e=infor.find_all('a')
+for ele in e:
+    x.append(ele.get('href'))
+    
+w=set(x)
+print(w.remove('/archive/text'))
+print(w)
+len(w)
